@@ -3,17 +3,17 @@ import pytest
 from app.utils.env_setup import check_for_env_vars
 
 def test_check_for_env_vars_all_present(monkeypatch):
-  monkeypatch.setenv("MY_DATABASE", "test_db")
+  monkeypatch.setenv("DATABASE_URL", "test_db")
   try:
     check_for_env_vars()
   except EnvironmentError:
     pytest.fail("check_for_env_vars() raised EnvironmentError unexpectedly!")
 
 def test_check_for_env_vars_missing(monkeypatch):
-  monkeypatch.delenv("MY_DATABASE", raising=False)
+  monkeypatch.delenv("DATABASE_URL", raising=False)
   with pytest.raises(EnvironmentError) as excinfo:
     check_for_env_vars()
-  assert "Missing required environment variables: MY_DATABASE" in str(excinfo.value)
+  assert "Missing required environment variables: DATABASE_URL" in str(excinfo.value)
 
 def test_check_for_env_vars_custom_vars_all_present(monkeypatch):
   custom_vars = ["CUSTOM_VAR1", "CUSTOM_VAR2"]

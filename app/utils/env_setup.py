@@ -1,7 +1,7 @@
 import os
 
 list_of_required_env_vars = [
-  "MY_DATABASE",
+  "DATABASE_URL",
 ]
 
 def check_for_env_vars(required_vars = list_of_required_env_vars):
