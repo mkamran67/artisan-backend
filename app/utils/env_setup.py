@@ -2,6 +2,7 @@ import os
 
 list_of_required_env_vars = [
   "DATABASE_URL",
+  "OPENAI_API_KEY",
 ]
 
 def check_for_env_vars(required_vars = list_of_required_env_vars):
